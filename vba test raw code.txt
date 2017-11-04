@@ -1,0 +1,25 @@
+Private Sub worksheet_selectionchange(ByVal target As Range)
+Application.ScreenUpdating = False
+
+Dim cel As Range
+Dim selected As Range
+Set selected = Application.Selection
+
+Dim i As Integer
+
+For Each cel In selected.Cells
+    If cel.Interior.ColorIndex <> -4142 And cel.Interior.ColorIndex <> 56 Then
+        i = cel.Interior.ColorIndex
+        i = i + 1
+        cel.Value = i
+        cel.Interior.ColorIndex = i
+        
+    Else
+        cel.Interior.ColorIndex = 4
+        cel.Value = 4
+    End If
+    
+Next cel
+
+Application.ScreenUpdating = True
+End Sub
